@@ -14,7 +14,7 @@ class FetchFromTabbyAPI:
         '''Sends a GET request, raises alert if status is an error,
         then returns a response object, either in default form or in json.'''
 
-        response = session.get(myURL,timeout=self.timeout)
+        response = self.session.get(myURL,timeout=self.timeout)
         try:
             response.raise_for_status()
             return response.json()
