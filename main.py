@@ -1,10 +1,15 @@
 import IO.api as apis
+import IO.io as io
 import ELOMath.elomath as emat
 def main():
     
+    myio = io.IO("elo_list_test.csv")
+    elo=myio.ReturnCurrentELOList()
+    myio.WriteNewELOList(elo)
+    '''
     api = apis.FetchFromTabbyAPI()
     testURL = input("Enter the link to the Tabbycat site containing tournaments you want to scrape... ")
-    num_of_rounds = 5
+    num_of_rounds = 5a
     ballot=1
     list_of_tournaments = api.get_list_of_tournaments_from_tabbycat(testURL)
     for tournament in list_of_tournaments:
@@ -21,7 +26,7 @@ def main():
                     
                     ballot+=1
         else: print(f'Skipping tournament {tournament}!')
-
+'''
 
 if __name__ == "__main__":
     main()

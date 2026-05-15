@@ -1,3 +1,5 @@
 LocalData/LocalCSV/aliases.csv
 LocalData/LocalCSV/elo_list.csv
+LocalData/LocalCSV/k_factor_schedule.csv
 LocalData/Logs/default.log
+__pycache__

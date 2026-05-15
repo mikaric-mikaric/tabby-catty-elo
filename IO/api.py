@@ -1,13 +1,14 @@
 import requests
 
-session = requests.Session()
 
 class FetchFromTabbyAPI:
 
     timeout = 10
+    session = None
 
     def __init__(self,timeout:int=10):
         self.timeout = timeout
+        self.session = requests.Session()
         
     def get_custom_request(self,myURL:str):
         '''Sends a GET request, raises alert if status is an error,
@@ -16,9 +17,9 @@ class FetchFromTabbyAPI:
         response = session.get(myURL,timeout=self.timeout)
         try:
             response.raise_for_status()
+            return response.json()
         except Exception as e:
-            print(f'Exception while trying to get custom request, exception:/n{e}')
-        return response.json()
+            print(f'Exception while trying to get custom request, exception:\n{e}')
 
     def get_list_of_tournaments_from_tabbycat(self,myURL:str):
         '''Returns a list of tournaments hosted a tabbycat site located on provided URL,
