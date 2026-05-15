@@ -36,3 +36,11 @@ def CalculateNewELO(ratingA:float,ratingB:float,kA:int,kB:int,spk_diffA:int,spk_
     NewRatingA,NewRatingB'''
     changeA, changeB = CalculateELOchange(ratingA,ratingB,kA,kB,spk_diffA,spk_diffB)
     return ratingA + changeA , ratingB + changeB
+
+def UpdateEloList(elo_list:list[list],speaker_name:str,new_elo:float):
+    '''Updates the ELO list with the new ELO of the speaker, if the speaker is not in the list, adds them to the list with their new ELO'''
+    for speaker in elo_list:
+        if speaker[0] == speaker_name:
+            speaker[1] = new_elo   
+            speaker[2] += 1
+            return

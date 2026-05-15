@@ -50,7 +50,10 @@ class FetchFromTabbyAPI:
         
         debate_link = self.get_custom_request(f'{tournamentURL}/rounds/{round_number}/pairings/{debate_id}')
         ballot_link = debate_link['_links']['ballots']
-        return self.get_custom_request(ballot_link)
+        ballot_data = self.get_custom_request(ballot_link)
+
+        return ballot_data
+
         
     def get_list_of_debate_data_from_round(self,tournamentURL:str,round_number:int):
         '''Returns a list of debate IDs, and a list of team IDs that faced each other
@@ -68,3 +71,8 @@ class FetchFromTabbyAPI:
         for debate in response_with_list_of_data:
             debate_ids.append(debate['id'])
         return debate_ids
+    
+    def get_speaker_name_from_speaker_link(self,speaker_link:str):
+        '''Returns the name of the speaker based on the link to the speaker'''
+        response = self.get_custom_request(speaker_link)
+        return response['name']
